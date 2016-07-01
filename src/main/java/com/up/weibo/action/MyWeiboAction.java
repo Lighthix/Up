@@ -1,6 +1,5 @@
 package com.up.weibo.action;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,6 @@ public class MyWeiboAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 
 	private List<WeiboEntity> weiboList;
-	private List<String> contentList;
 	@Autowired
 	private IWeiboService weiboService;
 
@@ -41,10 +39,6 @@ public class MyWeiboAction extends ActionSupport {
 			username = principal.toString();
 		}
 		weiboList = weiboService.getWeiboByUsername(username);
-		contentList = new ArrayList<String>();
-		for(WeiboEntity w:weiboList){
-			contentList.add(w.getContent());
-		}
 		return SUCCESS;
 	}
 
@@ -52,13 +46,5 @@ public class MyWeiboAction extends ActionSupport {
 	public void validate() {
 		// TODO Auto-generated method stub
 		super.validate();
-	}
-
-	public List<String> getContentList() {
-		return contentList;
-	}
-
-	public void setContentList(List<String> contentList) {
-		this.contentList = contentList;
 	}
 }

@@ -31,6 +31,10 @@
 		<action name="login">
 			<result>/auth/login.jsp</result>
 		</action>
+		
+		<action name="logout">
+			<result>/auth/login.jsp</result>
+		</action>
 
 		<action name="avatar" class="avatarAction">
 			<result name="success">/auth/avatar.jsp</result>
@@ -63,6 +67,15 @@
 		<action name="myWeibo" class="myWeiboAction">
 			<result name="success">/weibo/myWeibo.jsp</result>
 		</action>
+		<action name="myfollowuserWeibo" class="somebodysWeiboAction">
+			<result name="success">/weibo/myfollowuserweibo.jsp</result>
+		</action>
+	</package>
+	
+	<package name="weiboApi" extends="json-default" namespace="/api/weibo">
+		<action name="all" class="allWeiboAction">
+			<result name="success" type="json"/>
+		</action>
 	</package>
 	
 	<package name="search" extends="struts-default" namespace="/search">
@@ -74,8 +87,9 @@
 	<package name="searchApi" extends="json-default" namespace="/api/search">
 		<action name="searchUser" class="searchUserAction">
 			<result name="success" type="json">
-				 <param name="excludeProperties">passwordHash</param>
+				 <param name="excludeProperties">resultList.*\.passwordHash</param>
 			</result>
 		</action>
 	</package>
+	
 </struts>

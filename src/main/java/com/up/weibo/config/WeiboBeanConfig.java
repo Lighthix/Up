@@ -3,8 +3,10 @@ package com.up.weibo.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.up.weibo.action.AllWeiboAction;
 import com.up.weibo.action.MyWeiboAction;
 import com.up.weibo.action.PublishAction;
+import com.up.weibo.action.SomebodysWeiboAction;
 
 @Configuration
 public class WeiboBeanConfig {
@@ -16,5 +18,15 @@ public class WeiboBeanConfig {
 	@Bean
 	public MyWeiboAction myWeiboAction(){
 		return new MyWeiboAction();
+	}
+	
+	@Bean
+	public AllWeiboAction allWeiboAction(){
+		return new AllWeiboAction();
+	}
+	
+	@Bean
+	public SomebodysWeiboAction somebodysWeiboAction(){
+		return new SomebodysWeiboAction();
 	}
 }
